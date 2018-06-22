@@ -1,4 +1,37 @@
-#brute force!
+#Using Kadane's Algo! and slight modification :D
+
+n=int(input())
+
+a=[int(x) for x in input().split()]
+
+#Convert a to b where 0 becomes +1 and 1 becomes -1 
+
+b=[]
+ones=0 #no. of ones before flipping
+for ele in a:
+    if(ele==0):
+        b.append(1)
+    else:
+        b.append(-1)
+        ones+=1 
+        
+answer=ones #we need to try to maximize this value after one flipping
+
+#basically maximize sum of b 
+
+current=0
+maximum_sum=-10**9
+for ele in b:
+    current=max(ele,current+ele)
+    maximum_sum=max(maximum_sum,current)
+
+answer=ones+maximum_sum
+print(answer)
+
+
+
+        
+"""#brute force!
 
 n=int(input())
 
@@ -27,4 +60,4 @@ for i in range(0,n):
             
 
 print(maximum)
-        
+        """
