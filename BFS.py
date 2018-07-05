@@ -16,7 +16,6 @@ class Graph:
 		visited=defaultdict(lambda:False)
 		level={s:0}  #breadth-wise search! 
 		parent={s:-1} #useful to trace back the shortest path
-		index=1
 		visited[s]=True 
 		while queue:
 			u=queue.pop(0)
@@ -25,9 +24,9 @@ class Graph:
 				if(not visited[v]):
 					queue.append(v)
 					visited[v]=True
-					level[v]=index 
+					level[v]=level[u]+1 
 					parent[v]=u
-			index+=1 
+			
 
 
 
