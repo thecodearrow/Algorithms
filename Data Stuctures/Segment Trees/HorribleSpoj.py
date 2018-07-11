@@ -1,14 +1,15 @@
+# your code goes here
+
 #Good problem on Lazy Propagation
 
 #https://www.spoj.com/problems/HORRIBLE/
 
-#AC using PyPy :)
+#AC using PyPy :) 
 
-
-t=int(input())
+t=int(raw_input())
 while t!=0:
 	t-=1
-	n,c=[int(x) for x in input().split()]
+	n,c=[int(x) for x in raw_input().split()]
 	a=[0 for i in range(n)]
 	seg_tree=[0 for i in range(4*n)]
 	lazy=[0 for i in range(4*n)]
@@ -62,7 +63,7 @@ while t!=0:
 	buildTree(0,n-1,0)
 	while c!=0:
 		c-=1
-		temp=[int(x) for x in input().split()]
+		temp=[int(x) for x in raw_input().split()]
 		if(temp[0]==0):
 			p=temp[1]-1
 			q=temp[2]-1
