@@ -16,10 +16,10 @@ from collections import deque
 from collections import defaultdict
 class Graph:
 	def __init__(self):
-		self.neighbours=defaultdict(list)
+		self.neighbours=defaultdict(set)
 
 	def addEdge(self,u,v):
-		self.neighbours[u].append(v)
+		self.neighbours[u].add(v) 
 
 	def isCyclicVisit(self,u,black_stack,grey_stack):
 		grey_stack[u]=True 
@@ -82,17 +82,19 @@ for i in range(n-1):
 	second=strings[i+1]
 	flen=len(first)
 	slen=len(second)
-	if(first.find(second)!=-1): #second is a substring of first 
-		leflag=True
-		break
+	if(flen>slen): #second is a substring of 
+		if(first[:slen]==second):
+			leflag=True
+			break
 	for j in range(0,min(flen,slen)):
 		if(first[j]!=second[j]):
 			vertices.append(first[j])
 			#first mismatch
+			#MAKE SURE YOU ADD AN 
 			g.addEdge(first[j],second[j])
 			break 
 
-order=g.dfs_visit('a')
+order=g.dfs_visit('z')
 
 if(leflag or g.isCyclic(vertices)):
 	print("Impossible")
