@@ -18,13 +18,14 @@ class Graph:
 		while remaining:
 			minDist,minNode=heapq.heappop(remaining)  #extract min operation
 			#now explore all neighbours of this node
-			visited[minNode]=True
-			for v,length in self.neighbours[minNode]:
-				if(not visited[v]):
-					greedyScore=minDist+length
-					if(greedyScore<distanceFromS[v]):
-						distanceFromS[v]=greedyScore #update distance
-						heapq.heappush(remaining,(greedyScore,v))  #push updated node into priority queue
+			if(not visited[minNode]):
+				visited[minNode]=True
+				for v,length in self.neighbours[minNode]:
+					if(not visited[v]):
+						greedyScore=minDist+length
+						if(greedyScore<distanceFromS[v]):
+							distanceFromS[v]=greedyScore #update distance
+							heapq.heappush(remaining,(greedyScore,v))  #push updated node into priority queue
 
 
 
