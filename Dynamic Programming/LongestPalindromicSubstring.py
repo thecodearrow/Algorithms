@@ -33,7 +33,7 @@ class Solution:
         for length in range(3,l+1):  #length starting from 3
             for i in range(0,l-length+1): #starting point
                 j=i+length-1 #ending point
-                #inner word will be from i+1 to j 
+                #inner word will be from i+1 to j-1 
                 if(s[i]==s[j] and isPali[(i+1,j-1)]):
                     isPali[(i,j)]=True 
                     if(length>maxLen):
