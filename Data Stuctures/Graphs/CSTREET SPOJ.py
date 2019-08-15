@@ -1,14 +1,12 @@
+#https://www.spoj.com/problems/CSTREET/
 
-#https://www.spoj.com/problems/MST/
 import sys
-from collections import defaultdict
 try: 
-	sys.stdin = open('input.txt', 'r') 
-	sys.stdout = open('output.txt', 'w')
-
+    sys.stdin = open('input.txt', 'r') 
+    sys.stdout = open('output.txt', 'w')
+ 
 except: 
-	pass
-
+    pass
 
 
 class DisjointSet():
@@ -35,47 +33,35 @@ class DisjointSet():
             self.parent[leader_u]=leader_v #update pointer
             self.rank[leader_v]+=1 #update rank
 
-   
-    
 
+t=int(input())
+while t!=0:
+    t-=1
+    price_per_unit=int(input())
+    n=int(input())
+    ds=DisjointSet(n)
+    m=int(input())
+    edges=[]
+    for i in range(1,m+1):
+        u,v,l=[int(x) for x in input().split()]
+        cost=l*price_per_unit
+        edges.append([u,v,cost])
 
-n,m=[int(x) for x in input().split()]
-sorted_nodes=[]
-for i in range(m):
-    u,v,c=[int(x) for x in input().split()]
-    sorted_nodes.append([u,v,c])
+    edges=sorted(edges,key=lambda x:x[2]) #sort by cost
+    ans_min_cost=0
+    count=0
+    for u,v,c in edges:
+        if(count==n-1):
+            break
+        if(ds.find(u)!=ds.find(v)):
+            count+=1
+            ans_min_cost+=c
+            ds.union(u,v)
 
-sorted_nodes=sorted(sorted_nodes,key=lambda x:x[2]) #sorting based on costs
-ds=DisjointSet(n)
-count=0  #need n-1 edges in MST
-min_cost=0
-for u,v,c in sorted_nodes:
-    if(count==n-1):
-        break
-    if(ds.find(u)!=ds.find(v)):
-        #no cycle
-        min_cost+=c
-        count+=1
-        ds.union(u,v)
-        #print(u,v,ds.djset)
-print(min_cost)
-#print(ds.djset)
-
-
-
-
+    print(ans_min_cost)
 
 
 
 
 
-		
-
-		
-				
-
-
-
-
-		
 
