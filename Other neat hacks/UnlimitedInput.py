@@ -1,6 +1,6 @@
 while True:
 	try:
 		i=int(input())
-	except ValueError:
+	except EOFError:
 		print("Input done! Thankyou. :)")
 		break
