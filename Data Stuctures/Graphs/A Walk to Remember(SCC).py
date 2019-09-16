@@ -1,3 +1,5 @@
+#https://www.hackerearth.com/practice/algorithms/graphs/strongly-connected-components/practice-problems/algorithm/a-walk-to-remember-qualifier2/description/
+
 from collections import defaultdict
 import sys
 sys.setrecursionlimit(10**5)
@@ -50,6 +52,12 @@ for i in range(m):
 
 g1.DFS(n)
 g2.DFSKosaraju(n,g1.finished)
-
+ans=[]
+for i in range(1,n+1):
+    if(g2.scc[i]):
+        ans.append(1)
+    else:
+        ans.append(0)
         
+print(*ans)
     

@@ -10,7 +10,7 @@
 
 
 
-sys.setrecursionlimit(2500) #Increase Recursion Limit
+sys.setrecursionlimit(10**6) #Increase Recursion Limit
 def countWays(n,k,f,memo):
     key=str(n)+":"+str(k)
     if(key in memo):
