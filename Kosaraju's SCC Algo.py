@@ -5,7 +5,7 @@ class Graph:
     def __init__(self):
         self.neighbours=defaultdict(list)
         self.finished=[] #stack nodes by finish time
-        self.scc=defaultdict(lambda:False)
+        self.scc=defaultdict(set)
     
     def addEdge(self,u,v):
         self.neighbours[u].append(v)
@@ -24,13 +24,12 @@ class Graph:
             if(not visited[i]):
                 self.DFSVisit(i,visited)
         
-    def DFSVisitKosaraju(self,s,visited):
+    def DFSVisitKosaraju(self,s,visited,startNode):
         visited[s]=True
         for v in self.neighbours[s]:
             if(not visited[v]):
-                self.scc[s]=True
-                self.scc[v]=True
-                self.DFSVisitKosaraju(v,visited)
+                self.DFSVisitKosaraju(v,visited,startNode)
+                self.scc[startNode].add(v)
                 
                 
     def DFSKosaraju(self,n,finishedStack):
@@ -38,7 +37,7 @@ class Graph:
         while finishedStack:
             u=finishedStack.pop()
             if(not visited[u]):
-                self.DFSVisitKosaraju(u,visited)
+                self.DFSVisitKosaraju(u,visited,u)
                 
 n,m=[int(x) for x in input().split()]
 g1=Graph()
