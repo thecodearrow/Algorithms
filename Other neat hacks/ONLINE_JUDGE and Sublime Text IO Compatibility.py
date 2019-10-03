@@ -4,5 +4,9 @@ try:
 	sys.stdout = open('output.txt', 'w')
 
 except: 
-	pass
+	input = sys.stdin.readline #Python Fast I/O
 	
+
+def takeInput():
+    return [int(x) for x in input().strip().split()]
+ 
