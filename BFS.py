@@ -32,11 +32,10 @@ class Graph:
 
 
 g=Graph()
-g.addEdge(3,2)
-g.addEdge(2,3)
-g.addEdge(1,2)
-g.BFS(1)
-print()
-g.BFS(2)
-print()
-g.BFS(3)
+g.addEdge(0, 1)
+g.addEdge(1, 2)
+g.addEdge(2, 3)
+g.addEdge(0,4)
+g.addEdge(4,6)
+g.addEdge(0,5)
+g.BFS(0)
