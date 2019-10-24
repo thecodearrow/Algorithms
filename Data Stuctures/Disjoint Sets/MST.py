@@ -34,35 +34,28 @@ class DisjointSet():
         if(leader_u!=leader_v):
             self.parent[leader_u]=leader_v #update pointer
             self.rank[leader_v]+=1 #update rank
-
-   
+        
+def hasSingleCycle(array):
+    # Write your code here.
     
-
-
-n,m=[int(x) for x in input().split()]
-sorted_nodes=[]
-for i in range(m):
-    u,v,c=[int(x) for x in input().split()]
-    sorted_nodes.append([u,v,c])
-
-sorted_nodes=sorted(sorted_nodes,key=lambda x:x[2]) #sorting based on costs
-ds=DisjointSet(n)
-count=0  #need n-1 edges in MST
-min_cost=0
-for u,v,c in sorted_nodes:
-    if(count==n-1):
-        break
-    if(ds.find(u)!=ds.find(v)):
-        #no cycle
-        min_cost+=c
-        count+=1
+    n=len(array)
+    ds=DisjointSet(n)
+    for i,jumps in enumerate(array):
+        u=i
+        v=(i+jumps)%n
+        print(u,v)
+        if(ds.find(u)==ds.find(v)):
+            return True
         ds.union(u,v)
-        #print(u,v,ds.djset)
-print(min_cost)
-#print(ds.djset)
-
-
-
+    
+    
+            
+    return False
+                
+        
+        
+    
+print(hasSingleCycle([2,3,1,-4,-4,2]))
 
 
 
