@@ -4,7 +4,7 @@ try:
 	sys.stdout = open('output.txt', 'w')
 
 except: 
-	input = sys.stdin.readline #Python Fast I/O
+	pass
 	
 
 def takeInput():
