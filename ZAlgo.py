@@ -1,6 +1,6 @@
   #Z-Algorithm for substring matching
   
-  def getZArr(self,s):
+  def getZArr(s):
         n=len(s)
         z=[0]*n
         z[0]=n
@@ -25,3 +25,9 @@
                     r-=1 #mismatch (shot by 1)
         
         return z
+      
+      
+     #to find pattern m in string n
+    
+    s=m+"#"+n #pattern as a prefix! 
+    z=getZArr(s)
